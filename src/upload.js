@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 // import Octicon, { ArrowLeft } from '@primer/octicons-react'
 import Firebase from './firebase'
 import "firebase/storage";
+import "firebase/database";
 import {Link} from "react-router-dom";
 import FileUploader from "react-firebase-file-uploader";
 

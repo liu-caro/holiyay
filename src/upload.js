@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 // import Button from 'react-bootstrap/Button'
 // import Octicon, { ArrowLeft } from '@primer/octicons-react'
 import Firebase from './firebase'
+import "firebase/storage";
 import {Link} from "react-router-dom";
 import FileUploader from "react-firebase-file-uploader";
 

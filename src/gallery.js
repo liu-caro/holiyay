@@ -9,7 +9,7 @@ class Gallery extends Component {
     render() {
         return (
             <React.Fragment>
-                <BackgroundSlideshow images={[ img1, img2, img3 ]} animationDelay={900}/>
+                <BackgroundSlideshow images={[ img1, img2, img3 ]}/>
             </React.Fragment>
         );
     }

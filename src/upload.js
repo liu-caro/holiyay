@@ -19,10 +19,10 @@ class Upload extends Component {
         this.state = {
             isUploading: false,
             progress: 0,
-            imageURL: '',
+            imageUrl: '',
             caption: ''
         };
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -40,8 +40,8 @@ class Upload extends Component {
             .child(filename)
             .getDownloadURL()
             .then(url => {
-                this.setState({ imageURL: url });
-                console.log(this.state.imageURL);
+                this.setState({ imageUrl: url });
+                console.log(this.state.imageUrl);
             });
     };
 
@@ -49,7 +49,7 @@ class Upload extends Component {
         e.preventDefault();
         const itemsRef = Firebase.database().ref('images' );
         const item = {
-            imageURL: this.state.imageURL,
+            imageURL: this.state.imageUrl,
             caption: this.state.caption
         };
         itemsRef.push(item);
@@ -99,13 +99,13 @@ class Upload extends Component {
                             Upload your holiday photo!
                         </CustomUploadButton>
 
-                        {this.state.imageURL.length ? <img
-                            src={this.state.imageURL}
+                        {this.state.imageUrl.length ? <img
+                            src={this.state.imageUrl}
                             alt="Uploaded Images"
                             height="300"
                             width="400"
                         /> : <div/>}
-                        {console.log(this.state.imageURL)}
+                        {console.log(this.state.imageUrl)}
 
 
 

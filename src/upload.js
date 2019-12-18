@@ -24,10 +24,6 @@ class Upload extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentWillMount(){
-        // console.log(Firebase.database().ref('events').orderByKey().limitToLast(100));
-    }
-
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value

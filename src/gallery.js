@@ -5,13 +5,14 @@ import img2 from './images/img2.jpg';
 import img3 from './images/img3.jpg';
 import Firebase from "./firebase";
 import "firebase/storage";
+import Img from 'react-image';
 
 
 class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imageObjs: [],
+            imageObjs: []
             // images: []
         };
     }
@@ -26,6 +27,7 @@ class Gallery extends Component {
             console.log(this.state.imageObjs);
             // this.setState({ images: [imageObj.text.URL].concat(this.state.images) });
         })
+
     }
 
     populateImages(){
@@ -39,13 +41,25 @@ class Gallery extends Component {
 
 
     render() {
+       let images = [];
+        // this.state.imageObjs.map( imageRef =>
+        //         images.push(<img src={imageRef} alt="holidayImage" />));
+
+        // images.push(<img src={imageRef || "https://via.placeholder.com/1280x850"} alt="holidayImage" />)
+        // let img = document.getElementById('myimg');
+        // img.src = url;
 
 
         return (
             <React.Fragment>
 
-
                 <BackgroundSlideshow images={this.state.imageObjs}/>
+                {/*{this.state.imageObjs.map( imageRef =>*/}
+                {/*images.push(<img src={imageRef} alt="holidayImage" />))}*/}
+                {/*{this.state.imageObjs.map( imageRef =>*/}
+                {/*    images.push(<img src={imageRef} alt="holidayImage" />))}*/}
+                {/*{console.log(images)}*/}
+                {/*<BackgroundSlideshow images={images}/>*/}
             </React.Fragment>
         );
     }

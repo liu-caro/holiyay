@@ -9,8 +9,6 @@ import FormControl from "@chakra-ui/core/dist/FormControl";
 import FormLabel from "@chakra-ui/core/dist/FormLabel";
 import Input from "@chakra-ui/core/dist/Input";
 import FormHelperText from "@chakra-ui/core/dist/FormHelperText";
-import "firebase/storage";
-import "firebase/database";
 
 
 class Upload extends Component {
@@ -22,7 +20,7 @@ class Upload extends Component {
             imageURL: '',
             caption: ''
         };
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 

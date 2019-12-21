@@ -4,11 +4,10 @@ import "firebase/storage";
 import "firebase/database";
 // import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
-import Button from "@chakra-ui/core/dist/Button";
-import FormControl from "@chakra-ui/core/dist/FormControl";
-import FormLabel from "@chakra-ui/core/dist/FormLabel";
-import Input from "@chakra-ui/core/dist/Input";
-import FormHelperText from "@chakra-ui/core/dist/FormHelperText";
+import {Button, FormControl, FormLabel, Textarea, Flex, Text} from "@chakra-ui/core";
+import "./App.css";
+import "./theme";
+import Box from "@chakra-ui/core/dist/Box";
 
 
 class Upload extends Component {
@@ -52,6 +51,7 @@ class Upload extends Component {
         };
         itemsRef.push(item);
         this.setState({
+            imageUrl: '',
             caption:''
 
         });
@@ -63,50 +63,54 @@ class Upload extends Component {
             [e.target.id]: e.target.value
         });
 
+        let urlExists = this.state.imageUrl.length;
 
         return (
+
+
             <React.Fragment>
-
+                <Text textAlign="center" fontSize="3xl" mb={5}> Upload your <span>Holiday Photos</span></Text>
                 <form onSubmit={this.handleSubmit}>
-                    <FormControl>
-                        <FormLabel htmlFor="caption">Caption</FormLabel>
-                        <FormHelperText id="caption-helper-text">
-                            {/*Share why this photo makes you cheerful!*/}
-                        </FormHelperText>
-                        <Input onChange={handleChange} type="text" name="caption" id="caption" aria-describedby="caption" />
-                    </FormControl>
+                <Flex width="100%" align="center" justify="center" textAlign="center">
+                    <CustomUploadButton
+                        classname="upload-button"
+                        accept="image/*"
+                        randomizeFilename
+                        storageRef={Firebase.storage().ref("images")}
+                        onUploadStart={this.handleUploadStart}
+                        onUploadError={this.handleUploadError}
+                        onUploadSuccess={this.handleUploadSuccess}
+                        onProgress={this.handleProgress}
+                        style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4}}>
+                        Choose File
+                    </CustomUploadButton>
+                </Flex>
+                    <Box maxW = "95%">
 
+                    {this.state.imageUrl.length ? <img
+                        src={this.state.imageUrl}
+                        alt="Uploaded Images"
+                        height="300"
+                        width="400"
+                    /> : <div/>}
+                    {console.log(this.state.imageUrl)}
+
+                    <FormControl>
+                        <FormLabel m={2} mt={4} htmlFor="caption">Share any holiday greetings or why this photo makes your cheerful! (Optional)</FormLabel>
+                        <Textarea m={2} onChange={handleChange} type="text" name="caption" id="caption" aria-describedby="caption" />
+                    </FormControl>
+                    </Box>
+                <Flex align="center" justify="center" textAlign="center">
                     <Button
-                        mt={4}
-                        variantColor="teal"
-                        type="submit"
-                    >
+                        mt={10}
+                        variantColor="green"
+                        size="lg"
+                        isDisabled={!urlExists}
+                        type="submit">
                         Submit
                     </Button>
+                </Flex>
                 </form>
-
-                        <CustomUploadButton
-                            accept="image/*"
-                            randomizeFilename
-                            storageRef={Firebase.storage().ref("images")}
-                            onUploadStart={this.handleUploadStart}
-                            onUploadError={this.handleUploadError}
-                            onUploadSuccess={this.handleUploadSuccess}
-                            onProgress={this.handleProgress}
-                            style={{backgroundColor: 'steelblue', color: 'white', padding: 10, margin: 50, borderRadius: 4}}>
-                            Upload your holiday photo!
-                        </CustomUploadButton>
-
-                        {this.state.imageUrl.length ? <img
-                            src={this.state.imageUrl}
-                            alt="Uploaded Images"
-                            height="300"
-                            width="400"
-                        /> : <div/>}
-                        {console.log(this.state.imageUrl)}
-
-
-
 
             </React.Fragment>
         );

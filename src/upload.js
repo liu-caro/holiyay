@@ -53,7 +53,6 @@ class Upload extends Component {
         this.setState({
             imageUrl: '',
             caption:''
-
         });
     }
 

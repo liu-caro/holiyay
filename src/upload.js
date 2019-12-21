@@ -81,6 +81,8 @@ class Upload extends Component {
                         onUploadError={this.handleUploadError}
                         onUploadSuccess={this.handleUploadSuccess}
                         onProgress={this.handleProgress}
+                        maxHeight={1600}
+                        maxWidth={2560}
                         style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4}}>
                         Choose File
                     </CustomUploadButton>

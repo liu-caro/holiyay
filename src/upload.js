@@ -54,6 +54,7 @@ class Upload extends Component {
             imageUrl: '',
             caption:''
         });
+        window.alert("Photo successfully uploaded!")
     }
 
     render() {
@@ -95,7 +96,7 @@ class Upload extends Component {
                     {console.log(this.state.imageUrl)}
 
                     <FormControl>
-                        <FormLabel m={2} mt={4} htmlFor="caption">Share any holiday greetings or why this photo makes your cheerful! (Optional)</FormLabel>
+                        <FormLabel m={2} mt={4} htmlFor="caption">Share any holiday greetings or why this photo makes you cheerful! (Optional)</FormLabel>
                         <Textarea m={2} onChange={handleChange} type="text" name="caption" id="caption" aria-describedby="caption" />
                     </FormControl>
                     </Box>

@@ -96,7 +96,7 @@ class Upload extends Component {
                     {console.log(this.state.imageUrl)}
 
                     <FormControl>
-                        <FormLabel m={2} mt={4} htmlFor="caption">Share any holiday greetings or why this photo makes you cheerful! (Optional)</FormLabel>
+                        <FormLabel m={2} mt={4} htmlFor="caption">(Optional) Share any holiday greetings or why this photo makes you cheerful! (max: 65 characters) </FormLabel>
                         <Textarea m={2} onChange={handleChange} type="text" name="caption" id="caption" aria-describedby="caption" />
                     </FormControl>
                     </Box>

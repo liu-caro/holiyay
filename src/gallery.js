@@ -21,7 +21,7 @@ class Gallery extends Component {
         let imagesRef = Firebase.database().ref('images').orderByKey().limitToLast(100);
         imagesRef.on('child_added', snapshot => {
             /* Update React state when message is added at Firebase Database */
-            this.setState({ imageObjs: [{original: snapshot.val().imageURL}].concat(this.state.imageObjs) });
+            this.setState({ imageObjs: [{original: snapshot.val().imageURL, description: snapshot.val().caption}].concat(this.state.imageObjs) });
             console.log(this.state.imageObjs);
         })
 

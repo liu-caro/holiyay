@@ -1,7 +1,14 @@
 
 .image-gallery-slide img {
     width:auto;
-    height:1000px;
+    height:1060px;
     margin: auto;
     position:relative;
+}
+
+.image-gallery-slide .image-gallery-description {
+    bottom: 45px;
+    font-size: 3em;
+    font-family: Avenir;
+    padding: 8px 15px;
 }

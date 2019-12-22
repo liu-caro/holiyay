@@ -18,12 +18,21 @@ class Gallery extends Component {
 
     componentDidMount(){
         /* Create reference to messages in Firebase Database */
-        let imagesRef = Firebase.database().ref('images').orderByKey().limitToLast(100);
-        imagesRef.on('child_added', snapshot => {
+        let imagesRef = Firebase.database().ref('images').orderByKey();
+        // imagesRef.on('child_added', snapshot => {
+        imagesRef.on("value", snapshot => {
             /* Update React state when message is added at Firebase Database */
-            this.setState({ imageObjs: [{original: snapshot.val().imageURL, description: snapshot.val().caption}].concat(this.state.imageObjs) });
+            console.log(snapshot.val());
+            let data = snapshot.val();
+            let images = [];
+            Object.keys(data).forEach(function(key) {
+                images.push({original: data[key].imageURL, description:data[key].caption});
+            });
+            this.setState({imageObjs: images});
             console.log(this.state.imageObjs);
         })
+
+
 
     }
 
